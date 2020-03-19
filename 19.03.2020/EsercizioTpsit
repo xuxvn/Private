@@ -1,0 +1,51 @@
+int main() {
+
+
+	char stringa[50]; //dichiarazione di un array di nome stringa di dimensione 50
+	printf("Inserisci una stringa: "); 
+	scanf("%s", stringa); //si capisce che è un arrray dal tipo di dato %s che memorizza un gruppo di carattere e lo salva nel'indirizzo di memoria di stringa dichiarato prima)
+	int dim=0; //è il contatore di numeri di caratteri di stringa
+	while(stringa[dim]!='\0') dim++; //mentre dim è diverso dal terminatore "\0" che si trova alla fine di ogni array, lo si incrementa
+	printf("La dimensione della stringa inserita e': %d\n", dim); //stampo a video il contatore che è un numero intero  "%d" . \n serve ad andare a capo
+	char add[50] = "Compito"; 
+	int dim_conc = 0; 
+
+
+
+
+	//concatenazione di 2 stringhe
+
+
+	while (add[dim_conc] != '\0') dim_conc++; //mentre dim_conc è diverso dal terminatore, lo incremento. con questo si ottiene il numero di caratteri di "compito"
+	dim_conc += dim + 1; // dim_conc che ha valore 7, viene incrementato col numero di caratteri di dim+1, cioè il numero di caratteri di stringa+1. l'esercizio chiedeva di contare il numero di caratteri di 2 stringhe ma c'è pure lo spazio da contare quindi +1 oltre al numero di stringa
+	stringa[dim] = ' '; //stringa in posizione dim  viene sostituito con uno spazio vuoto, il primo ciclo while l'aveva posizionato nel terminatore. l'esercizio conta sempre lo spazio vuoto tra le due stringhe
+
+
+
+
+	int i, j; //dichiarazione di 2 variabili. sono 2 indici
+	for (i=dim+1, j=0; i<=dim_conc; i++, j++)//nel ciclo, i viene inizializzato al numero di stringa e j a 0.i  mentre i è minore del numero di 2 stringhe messe assieme più lo spazio, incrementa i due indici di 1.
+		stringa[i] = add[j]; //assegna il contenuto di add[j] a stringa[i]
+	printf("La stringa concatenata e': %s\n", stringa); //stampa stringa, il ciclo for serve a inserire i caratteri di due stringhe in stringa nello stesso ciclo
+
+
+
+
+
+
+	//inversione di 2 stringhe
+
+
+	char inversa[50]; //stringa in cui viene stampato prima la seconda parola e poi la prima
+
+	for (i=dim+1, j=0; i<dim_conc; i++, j++) //serve a stampare la seconda parola incrementando i e j e assegnando alla stringa inversa il valore di stringa[i]
+		inversa[j] = stringa[i]; 
+	inversa[j] = ' '; // alla fine del ciclo verrebbe stampato "compito "
+
+	for (i=0, j=j+1; i<dim; i++, j++)
+		inversa[j] = stringa[i];
+	inversa[j] = '\0'; //qui si aggiunge ciaone a inversa
+
+	printf("Dopo l'inversione: %s\n", inversa);
+	return 0;
+}
